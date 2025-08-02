@@ -1,12 +1,15 @@
+import logger from "@/logger";
 import { PostCard } from "@/components/PostCard";
 
 async function getAllPosts() {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts`)
 
   if (!response.ok) {
-    console.log('Ops, alguma coisa correu mal!')
+    logger.error("Ops, alguma coisa correu mal!")
+    return []
   }
 
+  logger.info("Posts obtidos com sucesso.")
   return response.json()
 }
 
