@@ -1,0 +1,14 @@
+body {
+  background: linear-gradient(180deg, #0E1112 0%, #00090E 100%);
+  min-height: 100vh;
+  margin: 0;
+}
+
+.app-container {
+  width: 75rem;
+  max-width: 90%;
+  height: 100vh;
+  margin: 3.5rem auto;
+  display: flex;
+  gap: 1.75rem;
+}
