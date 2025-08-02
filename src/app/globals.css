@@ -1,7 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background: linear-gradient(180deg, #0E1112 0%, #00090E 100%);
   min-height: 100vh;
-  margin: 0;
 }
 
 .app-container {
