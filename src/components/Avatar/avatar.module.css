@@ -1,0 +1,15 @@
+.avatar {
+  color: #888888;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.avatar img {
+  display: block;
+}
