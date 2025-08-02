@@ -1,5 +1,6 @@
 import logger from "@/logger";
 import { PostCard } from "@/components/PostCard";
+import styles from "@/app/page.module.css"
 
 async function getAllPosts() {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts`)
@@ -17,7 +18,7 @@ export default async function Home() {
   const posts = await getAllPosts()
 
   return (
-    <main>
+    <main className={styles.grid}>
       {posts.map(post => <PostCard key={post.id} post={post} />)}
     </main>
   );

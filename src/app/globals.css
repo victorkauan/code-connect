@@ -12,8 +12,12 @@ body {
 .app-container {
   width: 75rem;
   max-width: 90%;
-  height: 100vh;
+  min-height: 100vh;
   margin: 3.5rem auto;
   display: flex;
   gap: 1.75rem;
+}
+
+.main-content {
+  flex-grow: 1;
 }
