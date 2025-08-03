@@ -4,3 +4,15 @@
   gap: 1.5rem;
   justify-content: space-between;
 }
+
+.links {
+  margin: 0 auto;
+  display: flex;
+  gap: 1rem;
+}
+
+.grid a {
+  color: #BFFFC3;
+  font-size: 18px;
+  line-height: 1.5;
+}
