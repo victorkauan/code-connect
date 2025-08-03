@@ -1,7 +1,9 @@
+.link {
+  text-decoration: none;
+}
+
 .card {
   background-color: #171D1F;
-  width: 100%;
-  max-width: 486px;
   border-radius: 0.5rem;
   overflow: hidden;
 }
@@ -14,6 +16,7 @@
 .header figure {
   margin: 0;
   box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.24);
+  position: relative;
 }
 
 .header figure img {

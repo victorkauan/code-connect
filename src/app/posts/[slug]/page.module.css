@@ -1,0 +1,25 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.subtitle {
+  color: #888888;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.code {
+  color: #BCBCBC;
+  font-size: 15px;
+  line-height: 1.5;
+  background: #171D1F;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1.5rem 0 rgba(0, 0, 0, 0.24);
+  max-height: 250px;
+  overflow-y: scroll;
+}
