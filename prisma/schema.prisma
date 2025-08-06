@@ -13,5 +13,18 @@ model User {
   name     String
   username String @unique
   avatar   String
+
+  posts Post[]
 }
 
+model Post {
+  id       Int    @id @default(autoincrement())
+  authorId Int
+  cover    String
+  title    String
+  slug     String @unique
+  body     String
+  markdown String
+
+  author User @relation(fields: [authorId], references: [id])
+}
