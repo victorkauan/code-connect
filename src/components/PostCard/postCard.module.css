@@ -3,7 +3,7 @@
 }
 
 .card {
-  background-color: #171D1F;
+  background-color: #171d1f;
   border-radius: 0.5rem;
   overflow: hidden;
 }
@@ -24,8 +24,9 @@
   border-radius: 0.5rem;
 }
 
-.body, .footer {
-  color: #BCBCBC;
+.body,
+.footer {
+  color: #bcbcbc;
   padding: 1rem;
 }
 
@@ -47,4 +48,3 @@
   line-height: 1.5;
   text-align: justify;
 }
-

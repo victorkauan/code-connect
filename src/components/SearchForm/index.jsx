@@ -1,5 +1,5 @@
-import { Button } from "@/components/Button"
-import styles from "@/components/SearchForm/searchForm.module.css"
+import { Button } from "@/components/Button";
+import styles from "@/components/SearchForm/searchForm.module.css";
 
 export const SearchForm = () => {
   return (
@@ -11,5 +11,5 @@ export const SearchForm = () => {
       />
       <Button>Buscar</Button>
     </form>
-  )
-}
+  );
+};

@@ -5,14 +5,13 @@
 }
 
 .input {
-  color: #BCBCBC;
+  color: #bcbcbc;
   font-size: 22px;
   line-height: 1.5;
-  background-color: #171D1F;
+  background-color: #171d1f;
   flex-grow: 1;
   height: 51px;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   border: none;
 }
-

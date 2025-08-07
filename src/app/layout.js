@@ -1,6 +1,6 @@
-import { Prompt } from 'next/font/google'
+import { Prompt } from "next/font/google";
 import { Aside } from "@/components/Aside";
-import { SearchForm } from '@/components/SearchForm';
+import { SearchForm } from "@/components/SearchForm";
 import "@/app/globals.css";
 
 export const metadata = {
@@ -8,11 +8,11 @@ export const metadata = {
   description: "Uma rede social para devs!",
 };
 
-const prompt =  Prompt({
-  weight: ['400', '500', '600'],
-  subsets: ['latin'],
-  display: 'swap'
-})
+const prompt = Prompt({
+  weight: ["400", "500", "600"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export default function RootLayout({ children }) {
   return (

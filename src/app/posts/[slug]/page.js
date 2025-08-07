@@ -1,41 +1,39 @@
-import { redirect } from "next/navigation"
-import { remark } from "remark"
-import html from "remark-html"
-import logger from "@/logger"
-import { PostCard } from "@/components/PostCard"
-import styles from "@/app/posts/[slug]/page.module.css"
-import db from "../../../../prisma/db"
+import { redirect } from "next/navigation";
+import { remark } from "remark";
+import html from "remark-html";
+import logger from "@/logger";
+import { PostCard } from "@/components/PostCard";
+import styles from "@/app/posts/[slug]/page.module.css";
+import db from "../../../../prisma/db";
 
 async function getPostBySlug(slug) {
   try {
     const post = await db.post.findFirst({
       where: { slug },
-      include: { author: true }
-    })
+      include: { author: true },
+    });
 
     if (!post) {
-      throw new Error(`Post com o slug ${slug} não foi encontrado`)
+      throw new Error(`Post com o slug ${slug} não foi encontrado`);
     }
 
-    logger.info("Post obtido com sucesso.")
+    logger.info("Post obtido com sucesso.");
 
-    const processedContent = await remark()
-      .use(html)
-      .process(post.markdown)
-    const contentHtml = processedContent.toString()
+    const processedContent = await remark().use(html).process(post.markdown);
+    const contentHtml = processedContent.toString();
 
-    post.markdown = contentHtml
+    post.markdown = contentHtml;
 
-    return post
+    return post;
   } catch (error) {
-    logger.error("Falha ao obter post com o slug", { slug, error })
+    logger.error("Falha ao obter post com o slug", { slug, error });
   }
 
-  redirect("/not-found")
+  redirect("/not-found");
 }
 
 const Post = async ({ params }) => {
-  const post = await getPostBySlug(params.slug)
+  const post = await getPostBySlug(params.slug);
 
   return (
     <div className={styles.content}>
@@ -47,7 +45,7 @@ const Post = async ({ params }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;
