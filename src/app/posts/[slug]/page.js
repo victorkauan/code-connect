@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation"
 import { remark } from "remark"
 import html from "remark-html"
 import logger from "@/logger"
@@ -6,20 +7,31 @@ import styles from "@/app/posts/[slug]/page.module.css"
 import db from "../../../../prisma/db"
 
 async function getPostBySlug(slug) {
-  const post = await db.post.findFirst({
-    where: { slug },
-    include: { author: true }
-  })
-  logger.info("Post obtido com sucesso.")
+  try {
+    const post = await db.post.findFirst({
+      where: { slug },
+      include: { author: true }
+    })
 
-  const processedContent = await remark()
-    .use(html)
-    .process(post.markdown)
-  const contentHtml = processedContent.toString()
+    if (!post) {
+      throw new Error(`Post com o slug ${slug} não foi encontrado`)
+    }
 
-  post.markdown = contentHtml
+    logger.info("Post obtido com sucesso.")
 
-  return post
+    const processedContent = await remark()
+      .use(html)
+      .process(post.markdown)
+    const contentHtml = processedContent.toString()
+
+    post.markdown = contentHtml
+
+    return post
+  } catch (error) {
+    logger.error("Falha ao obter post com o slug", { slug, error })
+  }
+
+  redirect("/not-found")
 }
 
 const Post = async ({ params }) => {
