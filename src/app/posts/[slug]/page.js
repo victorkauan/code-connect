@@ -1,29 +1,16 @@
-import Image from "next/image"
 import { remark } from "remark"
 import html from "remark-html"
 import logger from "@/logger"
-import { Avatar } from "@/components/Avatar"
+import { PostCard } from "@/components/PostCard"
 import styles from "@/app/posts/[slug]/page.module.css"
-import {PostCard} from "@/components/PostCard"
+import db from "../../../../prisma/db"
 
 async function getPostBySlug(slug) {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts?slug=${slug}`)
-
-  if (!response.ok) {
-    logger.error("Ops, alguma coisa correu mal!")
-    return {}
-  }
-
-  const data = await response.json()
-
-  if (!data.length) {
-    logger.error("Ops, alguma coisa correu mal!")
-    return {}
-  }
-
+  const post = await db.post.findFirst({
+    where: { slug },
+    include: { author: true }
+  })
   logger.info("Post obtido com sucesso.")
-
-  const post =  data[0]
 
   const processedContent = await remark()
     .use(html)
