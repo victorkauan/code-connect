@@ -1,24 +1,35 @@
+import Link from "next/link";
 import logger from "@/logger";
 import { PostCard } from "@/components/PostCard";
+import db from "../../prisma/db";
 import styles from "@/app/page.module.css"
-import Link from "next/link";
 
-const DEFAULT_PER_PAGE = 6
+async function getAllPosts(page, perPage = 6) {
+  try {
+    const skip = (page - 1) * perPage
 
-async function getAllPosts(page) {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts?_page=${page}&_per_page=${DEFAULT_PER_PAGE}`)
+    const totalItems = await db.post.count()
+    const totalPages = Math.ceil(totalItems / perPage)
 
-  if (!response.ok) {
-    logger.error("Ops, alguma coisa correu mal!")
-    return []
+    const prev = page > 1 ? page - 1 : null
+    const next = page < totalPages ? page + 1 : null
+
+    const posts = await db.post.findMany({
+      take: perPage,
+      skip,
+      orderBy: { createdAt: 'desc' },
+      include: { author: true }
+    })
+
+    return { data: posts, prev, next }
+  } catch (error) {
+    logger.error('Falha ao obter posts', { error })
+    return { data: [], prev: null, next: null }
   }
-
-  logger.info("Posts obtidos com sucesso.")
-  return response.json()
 }
 
 export default async function Home({ searchParams }) {
-  const currentPage = searchParams?.page ?? 1
+  const currentPage = parseInt(searchParams?.page ?? 1)
   const { data: posts, prev, next } = await getAllPosts(currentPage)
 
   return (
