@@ -1,0 +1,21 @@
+.error {
+  text-align: center;
+}
+
+.error img {
+  margin-bottom: 3.5rem;
+}
+
+.error p {
+  color: #BCBCBC;
+  font-size: 26px;
+  line-height: 1.5;
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.error a {
+  color: #BFFFC3;
+  font-size: 18px;
+  line-height: 1.5;
+}
