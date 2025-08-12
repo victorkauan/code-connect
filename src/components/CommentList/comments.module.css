@@ -1,8 +1,4 @@
-.comments {
-  list-style: none;
-}
-
-.comments li {
+.item {
   padding: 1rem 0;
   display: flex;
   align-items: flex-start;
@@ -10,6 +6,6 @@
   gap: 0.5rem;
 }
 
-.comments li:not(:last-child) {
+.item:not(:last-child) {
   border-bottom: 1px solid #3e3e3f;
 }

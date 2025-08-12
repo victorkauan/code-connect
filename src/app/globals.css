@@ -9,6 +9,10 @@ body {
   min-height: 100vh;
 }
 
+ul {
+  list-style: none;
+}
+
 a:visited {
   color: #81fe88;
 }

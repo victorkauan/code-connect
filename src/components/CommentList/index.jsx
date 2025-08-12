@@ -7,10 +7,10 @@ export const CommentList = ({ comments }) => {
   return (
     <ul className={styles.comments}>
       {comments.map((comment) => (
-        <li key={comment.id}>
+        <li key={comment.id} className={styles.item}>
           <Comment comment={comment} />
           <ModalReply comment={comment} />
-          <Replies />
+          <Replies comment={comment} />
         </li>
       ))}
     </ul>
