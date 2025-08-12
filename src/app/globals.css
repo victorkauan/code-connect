@@ -9,6 +9,10 @@ body {
   min-height: 100vh;
 }
 
+a:visited {
+  color: #81fe88;
+}
+
 .app-container {
   width: 75rem;
   max-width: 90%;
@@ -23,6 +27,6 @@ body {
 }
 
 ::backdrop {
-  background-color: #171D1F;
+  background-color: #171d1f;
   opacity: 0.8;
 }
