@@ -1,0 +1,23 @@
+.dialog {
+  background: #3e3e3f;
+  width: 60rem;
+  max-width: 80%;
+  padding: 1.5rem;
+  margin: auto;
+  border: none;
+  border-radius: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header button {
+  color: #e1e1e1;
+  font-size: 18px;
+  line-height: 1.5;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
