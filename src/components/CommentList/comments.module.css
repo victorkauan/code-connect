@@ -1,0 +1,11 @@
+.comments {
+  list-style: none;
+}
+
+.comments li {
+  padding: 1rem 0;
+}
+
+.comments li:not(:last-child) {
+  border-bottom: 1px solid #3e3e3f;
+}
