@@ -29,3 +29,26 @@ export async function postComment(post, formData) {
   revalidatePath("/");
   revalidatePath(`/${post.slug}`);
 }
+
+export async function postReply(parent, formData) {
+  const author = await db.user.findFirst({
+    where: { username: "anabeatriz_dev" },
+  });
+
+  const post = await db.post.findFirst({
+    where: {
+      id: parent.postId,
+    },
+  });
+
+  await db.comment.create({
+    data: {
+      authorId: author.id,
+      postId: post.id,
+      parentId: parent.parentId ?? parent.id,
+      text: formData.get("text"),
+    },
+  });
+
+  revalidatePath(`/${post.slug}`);
+}
