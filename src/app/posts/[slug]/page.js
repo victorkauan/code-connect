@@ -3,14 +3,15 @@ import { remark } from "remark";
 import html from "remark-html";
 import logger from "@/logger";
 import { PostCard } from "@/components/PostCard";
-import styles from "@/app/posts/[slug]/page.module.css";
+import {CommentList} from "@/components/CommentList";
 import db from "../../../../prisma/db";
+import styles from "@/app/posts/[slug]/page.module.css";
 
 async function getPostBySlug(slug) {
   try {
     const post = await db.post.findFirst({
       where: { slug },
-      include: { author: true, comments: true },
+      include: { author: true, comments: { include: { author: true } } },
     });
 
     if (!post) {
@@ -43,6 +44,10 @@ const Post = async ({ params }) => {
         <div className={styles.code}>
           <div dangerouslySetInnerHTML={{ __html: post.markdown }} />
         </div>
+      </div>
+      <div className={styles.comments}>
+        <h2>Comentários</h2>
+        <CommentList comments={post.comments} />
       </div>
     </div>
   );

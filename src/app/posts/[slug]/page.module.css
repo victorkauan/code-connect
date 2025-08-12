@@ -23,3 +23,15 @@
   max-height: 250px;
   overflow-y: scroll;
 }
+
+.comments {
+  color: #171d1f;
+  background-color: #888888;
+  padding: 2rem;
+}
+
+.comments h3 {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.5;
+}
