@@ -1,5 +1,6 @@
 import { Comment } from "@/components/Comment";
 import { ModalReply } from "@/components/ModalReply";
+import { Replies } from "@/components/Replies";
 import styles from "@/components/CommentList/comments.module.css";
 
 export const CommentList = ({ comments }) => {
@@ -9,6 +10,7 @@ export const CommentList = ({ comments }) => {
         <li key={comment.id}>
           <Comment comment={comment} />
           <ModalReply comment={comment} />
+          <Replies />
         </li>
       ))}
     </ul>
