@@ -26,7 +26,7 @@ async function getAllPosts(page, searchTerm) {
       take: perPage,
       skip,
       orderBy: { createdAt: "desc" },
-      include: { author: true },
+      include: { author: true, comments: true },
     });
 
     return { data: posts, prev, next };

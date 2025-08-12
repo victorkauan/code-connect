@@ -10,7 +10,7 @@ async function getPostBySlug(slug) {
   try {
     const post = await db.post.findFirst({
       where: { slug },
-      include: { author: true },
+      include: { author: true, comments: true },
     });
 
     if (!post) {
