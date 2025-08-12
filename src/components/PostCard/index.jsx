@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { incrementThumbsUp } from "@/actions";
-import { IconButton } from "@/components/IconButton";
-import { ThumbsUp } from "@/components/icons/ThumbsUp";
+import { ThumbsUpButton } from "@/components/PostCard/ThumbsUpButton";
 import { Avatar } from "@/components/Avatar";
 import styles from "@/components/PostCard/postCard.module.css";
 
@@ -31,9 +30,7 @@ export const PostCard = ({ post, highlight }) => {
       <footer className={styles.footer}>
         <div className={styles.actions}>
           <form action={submitThumbsUp}>
-            <IconButton>
-              <ThumbsUp />
-            </IconButton>
+            <ThumbsUpButton />
             <p>{post.likes}</p>
           </form>
         </div>
