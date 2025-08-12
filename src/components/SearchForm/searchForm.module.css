@@ -6,6 +6,7 @@
 
 .input {
   color: #bcbcbc;
+  font-family: inherit;
   font-size: 22px;
   line-height: 1.5;
   background-color: #171d1f;
