@@ -15,7 +15,8 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  posts Post[]
+  posts    Post[]
+  comments Comment[]
 }
 
 model Post {
@@ -26,8 +27,25 @@ model Post {
   slug      String   @unique
   body      String
   markdown  String
+  likes     Int      @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  author User @relation(fields: [authorId], references: [id])
+  author   User      @relation(fields: [authorId], references: [id])
+  comments Comment[]
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  authorId  Int
+  postId    Int
+  parentId  Int?
+  text      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  author   User      @relation(fields: [authorId], references: [id])
+  post     Post      @relation(fields: [postId], references: [id])
+  parent   Comment?  @relation("CommentChildren", fields: [parentId], references: [id])
+  children Comment[] @relation("CommentChildren")
 }
