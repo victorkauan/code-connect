@@ -1,12 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
-import { incrementThumbsUp } from "@/actions";
+import { incrementThumbsUp, postComment } from "@/actions";
 import { ThumbsUpButton } from "@/components/PostCard/ThumbsUpButton";
 import { Avatar } from "@/components/Avatar";
+import { ModalComment } from "@/components/ModalComment";
 import styles from "@/components/PostCard/postCard.module.css";
 
 export const PostCard = ({ post, highlight }) => {
   const submitThumbsUp = incrementThumbsUp.bind(null, post);
+  const submitComment = postComment.bind(null, post);
 
   return (
     <article
@@ -33,6 +35,10 @@ export const PostCard = ({ post, highlight }) => {
             <ThumbsUpButton />
             <p>{post.likes}</p>
           </form>
+          <div>
+            <ModalComment action={submitComment} />
+            <p>{post.comments.length}</p>
+          </div>
         </div>
         <Avatar name={post.author.username} imageSrc={post.author.avatar} />
       </footer>

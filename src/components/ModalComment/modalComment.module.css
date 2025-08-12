@@ -1,0 +1,9 @@
+.form textarea {
+  margin-top: 1rem;
+}
+
+.form footer {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
